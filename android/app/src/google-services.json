@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "545157948606",
+    "project_id": "mechanickoi-9eab1",
+    "storage_bucket": "mechanickoi-9eab1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545157948606:android:c145fe2b214b3830ed2aef",
+        "android_client_info": {
+          "package_name": "com.example.mechanic_koi_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545157948606-meug2qskodtuqflmg9a206q23he8jptj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy1KCjOYTOP5vhx0NGcEniZNl6nsExZdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545157948606-meug2qskodtuqflmg9a206q23he8jptj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
