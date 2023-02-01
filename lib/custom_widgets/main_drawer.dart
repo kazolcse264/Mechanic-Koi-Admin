@@ -4,6 +4,7 @@ import 'package:mechanic_koi_admin/auth/auth_service.dart';
 import 'package:mechanic_koi_admin/pages/employee_list_page.dart';
 
 import '../pages/all_servicing_page.dart';
+import '../pages/all_servicing_page_by_employee.dart';
 import '../pages/category_page.dart';
 import '../pages/launcher_page.dart';
 import '../pages/offer_list_page.dart';
@@ -129,7 +130,8 @@ class _MainDrawerState extends State<MainDrawer> {
                   trailing: const Icon(Icons.keyboard_arrow_right),
                 )
               : ListTile(
-                  onTap: () {},
+                  onTap: () =>
+                      Navigator.pushNamed(context, AllServicingPageByEmployee.routeName, arguments: widget.employeeProvider!.employeeServicesModelListToday.length),
                   leading: CircleAvatar(
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),
@@ -165,7 +167,8 @@ class _MainDrawerState extends State<MainDrawer> {
                   trailing: const Icon(Icons.keyboard_arrow_right),
                 )
               : ListTile(
-                  onTap: () {},
+                  onTap: ()  =>
+                      Navigator.pushNamed(context, AllServicingPageByEmployee.routeName),
                   leading: CircleAvatar(
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),

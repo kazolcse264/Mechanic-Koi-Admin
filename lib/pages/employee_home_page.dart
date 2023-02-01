@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../custom_widgets/main_drawer.dart';
 import '../providers/service_provider.dart';
 import 'all_servicing_page.dart';
+import 'all_servicing_page_by_employee.dart';
 import 'bottom_nav_bar_wrapper_page.dart';
 import 'employee_list_page.dart';
 import 'offer_list_page.dart';
@@ -257,7 +258,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         children: [
           InkWell(
             onTap: () =>
-                Navigator.pushNamed(context, AllServicingPage.routeName, arguments: serviceProvider.bookServiceListToday.length),
+                Navigator.pushNamed(context, AllServicingPageByEmployee.routeName, arguments: employeeProvider.employeeServicesModelListToday.length),
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,
@@ -308,7 +309,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
           ),
           InkWell(
             onTap: () =>
-                Navigator.pushNamed(context, AllServicingPage.routeName),
+                Navigator.pushNamed(context, AllServicingPageByEmployee.routeName),
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,

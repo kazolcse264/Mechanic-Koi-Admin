@@ -7,6 +7,7 @@ import 'package:mechanic_koi_admin/pages/Welcome/welcome_screen.dart';
 import 'package:mechanic_koi_admin/pages/add_employee_page.dart';
 import 'package:mechanic_koi_admin/pages/add_offer_page.dart';
 import 'package:mechanic_koi_admin/pages/all_servicing_page.dart';
+import 'package:mechanic_koi_admin/pages/all_servicing_page_by_employee.dart';
 import 'package:mechanic_koi_admin/pages/bottom_nav_bar_page.dart';
 import 'package:mechanic_koi_admin/pages/bottom_nav_bar_wrapper_page.dart';
 import 'package:mechanic_koi_admin/pages/category_page.dart';
@@ -97,6 +98,7 @@ class MyApp extends StatelessWidget {
         ServiceDetailsPage.routeName : (context) => const ServiceDetailsPage(),
         OfferDetailsPage.routeName : (context) => const OfferDetailsPage(),
         EmployeeDetailsPage.routeName : (context) => const EmployeeDetailsPage(),
+        AllServicingPageByEmployee.routeName : (context) => const AllServicingPageByEmployee(),
       },
     );
   }
