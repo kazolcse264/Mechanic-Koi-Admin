@@ -370,9 +370,11 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
       employeeProvider.addEmployee(employeeModel).then((value) async{
         await AuthService.logOut();
         final status = await AuthService.loginAdmin('admin@gmail.com', '123456');
+        EasyLoading.dismiss();
         if (status) {
           if (mounted) {
             Navigator.pushReplacementNamed(context, LauncherPage.routeName,) ;
+            EasyLoading.dismiss();
           }
         } else {
           await AuthService.logOut();

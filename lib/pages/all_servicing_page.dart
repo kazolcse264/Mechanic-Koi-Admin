@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mechanic_koi_admin/pages/service_details_page.dart';
 import 'package:mechanic_koi_admin/providers/service_provider.dart';
+import 'package:mechanic_koi_admin/utils/helper_functions.dart';
 import 'package:provider/provider.dart';
 
 class AllServicingPage extends StatefulWidget {
@@ -33,6 +34,7 @@ class _AllServicingPageState extends State<AllServicingPage> {
                   tileColor: service.paymentStatus ? null : Colors.grey.withOpacity(.5),
                 title: const Text('New Booking Order'),
                 subtitle: Text('Service Id: ${service.bookServiceId}'),
+                trailing: Text(getFormattedDate(service.dateModel.timestamp.toDate())),
               ),
             );
           },

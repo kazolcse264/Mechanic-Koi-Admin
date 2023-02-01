@@ -168,7 +168,7 @@ class _AddOfferPageState extends State<AddOfferPage> {
                                                   SubcategoryModel>(
                                               value: null,
                                               child: Text(
-                                                  'Please select a category'))
+                                                  'Please select a Sub Category'))
                                         ]
                                       : provider.subcategoryList
                                           .where((subcategory) =>
@@ -178,8 +178,14 @@ class _AddOfferPageState extends State<AddOfferPage> {
                                           .map((subCatModel) =>
                                               DropdownMenuItem(
                                                 value: subCatModel,
-                                                child: Text(
-                                                    subCatModel.serviceName),
+                                                child: ListTile(
+                                                  title:
+                                                  Text(subCatModel.serviceName),
+                                                  trailing: Text(
+                                                    subCatModel.servicePrice
+                                                        .toString(),
+                                                  ),
+                                                ),
                                               ))
                                           .toList(),
                                   value: subcategoryModel,
@@ -212,7 +218,7 @@ class _AddOfferPageState extends State<AddOfferPage> {
                                 TextButton.icon(
                                   onPressed: _selectDate,
                                   icon: const Icon(Icons.calendar_month),
-                                  label: const Text('Select Service Date'),
+                                  label: const Text('Select Offer Expired Date'),
                                 ),
                                 Text(offerExpiredDate == null
                                     ? 'No date chosen'

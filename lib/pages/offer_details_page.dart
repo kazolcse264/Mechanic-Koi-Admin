@@ -143,7 +143,7 @@ class _OfferDetailsPageState extends State<OfferDetailsPage> {
                     .pickImage(source: ImageSource.gallery, imageQuality: 70);
                 final imageModel =
                     await serviceProvider.uploadImage(file!.path);
-                serviceProvider.updateAdminOfferField(offerId, '$offerFieldThumbnailImageModel.$imageFieldProductImageDownloadUrl', imageModel.imageDownloadUrl);
+                serviceProvider.updateAdminOfferField(offerId, '$offerFieldThumbnailImageModel.$imageFieldImageDownloadUrl', imageModel.imageDownloadUrl);
                 serviceProvider.updateAdminOfferField(offerId, '$offerFieldThumbnailImageModel.$imageFieldOfferId', offerId);
                 serviceProvider.updateAdminOfferField(offerId, '$offerFieldThumbnailImageModel.$imageFieldOfferTitle', imageModel.title);
               },

@@ -198,6 +198,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                         bookServiceModel.paymentStatus);
                     EasyLoading.show(status: 'Please Wait...');
                     showMsg(context, 'Update Successfully');
+                    EasyLoading.dismiss();
                   } catch (error) {
                     errMsg = error.toString();
                     showMsg(context, errMsg);

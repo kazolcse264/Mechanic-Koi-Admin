@@ -36,4 +36,15 @@ class SubcategoryModel {
     serviceName: map[subcategoryFieldServiceName],
     servicePrice: map[subcategoryFieldServicePrice],
   );
+
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is SubcategoryModel &&
+              runtimeType == other.runtimeType &&
+              serviceId == other.serviceId;
+
+  @override
+  int get hashCode => serviceId.hashCode;
 }

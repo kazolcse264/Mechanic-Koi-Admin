@@ -1,6 +1,6 @@
 const String imageFieldOfferId = 'offerId';
 const String imageFieldOfferTitle = 'title';
-const String imageFieldProductImageDownloadUrl = 'imageDownloadUrl';
+const String imageFieldImageDownloadUrl = 'imageDownloadUrl';
 
 class ImageModel {
   String? offerId;
@@ -16,12 +16,12 @@ class ImageModel {
   Map<String, dynamic> toMap() => <String, dynamic>{
         imageFieldOfferId: offerId,
         imageFieldOfferTitle: title,
-        imageFieldProductImageDownloadUrl: imageDownloadUrl,
+        imageFieldImageDownloadUrl: imageDownloadUrl,
       };
 
   factory ImageModel.fromMap(Map<String, dynamic> map) => ImageModel(
         offerId: map[imageFieldOfferId],
         title: map[imageFieldOfferTitle],
-        imageDownloadUrl: map[imageFieldProductImageDownloadUrl],
+        imageDownloadUrl: map[imageFieldImageDownloadUrl],
       );
 }

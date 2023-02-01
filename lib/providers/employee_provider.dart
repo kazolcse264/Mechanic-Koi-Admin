@@ -15,7 +15,9 @@ class EmployeeProvider extends ChangeNotifier {
   List<EmployeeModel> employeeModelList = [];
   List<BookServiceModel> employeeServicesModelList = [];
   List<BookServiceModel> employeeServicesModelListToday = [];
-  Future<void> addEmployee(EmployeeModel employeeModel) => DbHelper.addEmployee(employeeModel);
+
+  Future<void> addEmployee(EmployeeModel employeeModel) =>
+      DbHelper.addEmployee(employeeModel);
 
   Future<bool> doesUserExist(String uid) => DbHelper.doesUserExist(uid);
 
@@ -31,31 +33,33 @@ class EmployeeProvider extends ChangeNotifier {
   getAllEmployees() {
     DbHelper.getAllEmployees().listen((snapshot) {
       employeeModelList = List.generate(snapshot.docs.length,
-              (index) => EmployeeModel.fromMap(snapshot.docs[index].data()));
-      notifyListeners();
-    });
-  }
-  getAllServicesByEmployee(String employeeId) {
-    DbHelper.getAllServicesByEmployee(employeeId).listen((snapshot) {
-      employeeServicesModelList = List.generate(snapshot.docs.length,
-              (index) => BookServiceModel.fromMap(snapshot.docs[index].data()));
-      notifyListeners();
-    });
-  }
-  getAllServicesByEmployeeToday(String employeeId) {
-    DbHelper.getAllServicesByEmployeeToday(employeeId).listen((snapshot) {
-      employeeServicesModelListToday = List.generate(snapshot.docs.length,
-              (index) => BookServiceModel.fromMap(snapshot.docs[index].data()));
+          (index) => EmployeeModel.fromMap(snapshot.docs[index].data()));
       notifyListeners();
     });
   }
 
+  getAllServicesByEmployee(String employeeId) {
+    DbHelper.getAllServicesByEmployee(employeeId).listen((snapshot) {
+      employeeServicesModelList = List.generate(snapshot.docs.length,
+          (index) => BookServiceModel.fromMap(snapshot.docs[index].data()));
+      notifyListeners();
+    });
+  }
+
+  getAllServicesByEmployeeToday(String employeeId) {
+    DbHelper.getAllServicesByEmployeeToday(employeeId).listen((snapshot) {
+      employeeServicesModelListToday = List.generate(snapshot.docs.length,
+          (index) => BookServiceModel.fromMap(snapshot.docs[index].data()));
+      notifyListeners();
+    });
+  }
 
   Future<void> updateUserProfileField(String field, dynamic value) =>
       DbHelper.updateEmployeeProfileField(
         AuthService.currentUser!.uid,
-        {field : value},
+        {field: value},
       );
+
   Future<ImageModel> uploadImage(String path) async {
     final imageName = 'pro_${DateTime.now().millisecondsSinceEpoch}';
     final imageRef = FirebaseStorage.instance
@@ -66,17 +70,19 @@ class EmployeeProvider extends ChangeNotifier {
     final downloadUrl = await snapshot.ref.getDownloadURL();
     return ImageModel(title: imageName, imageDownloadUrl: downloadUrl);
   }
+
   EmployeeModel getEmployeeById(String id) {
     return employeeModelList.firstWhere((element) => element.employeeId == id);
   }
 
-  Future<void> updateEmployeeField(String employeeId, String field, dynamic value) =>
+  Future<void> updateEmployeeField(
+          String employeeId, String field, dynamic value) =>
       DbHelper.updateEmployeeField(
         employeeId,
-        {field : value},
+        {field: value},
       );
 
   Future<void> deleteEmployee(String employeeId) {
-    return DbHelper.deleteEmployee( employeeId);
+    return DbHelper.deleteEmployee(employeeId);
   }
 }
