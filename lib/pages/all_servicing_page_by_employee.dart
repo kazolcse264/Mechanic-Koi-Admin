@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mechanic_koi_admin/pages/service_details_page.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:mechanic_koi_admin/utils/helper_functions.dart';
 import 'package:provider/provider.dart';
+
+import 'employee_service_details_page.dart';
 
 class AllServicingPageByEmployee extends StatefulWidget {
   static const String routeName = '/all_service_by_employee';
@@ -28,7 +31,7 @@ class _AllServicingPageByEmployeeState extends State<AllServicingPageByEmployee>
               padding: const EdgeInsets.all(4.0),
               child: ListTile(
                 onTap: () {
-                 /* Navigator.pushNamed(context, ServiceDetailsPage.routeName, arguments: service.bookServiceId);*/
+                  Navigator.pushNamed(context, EmployeeServiceDetailsPage.routeName, arguments: service.bookServiceId);
                 },
                 tileColor: service.paymentStatus ? null : Colors.grey.withOpacity(.5),
                 title: const Text('New Booking Order'),

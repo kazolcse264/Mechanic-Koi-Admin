@@ -80,41 +80,12 @@ class _MainDrawerState extends State<MainDrawer> {
               ],
             ),
           ),
-          (widget.isAdminMainDrawer)
-              ? const Padding(
-                  padding: EdgeInsets.only(left: 18.0, top: 8),
-                  child: Text(
-                    'Menu',
-                    style: TextStyle(color: Colors.grey, fontSize: 20),
-                  ))
-              : ListTile(
-                  onTap: () {},
-                  leading: const CircleAvatar(child: Icon(Icons.notifications)),
-                  title: const Text('Notification'),
-                  trailing: Container(
-                    height: 100,
-                    width: 100,
-                    child: FlutterSwitch(
-                      width: 60.0,
-                      height: 35.0,
-                      toggleSize: 30.0,
-                      value: status,
-                      borderRadius: 30.0,
-                      toggleColor: Colors.white,
-                      toggleBorder: Border.all(
-                        color: Colors.white,
-                        width: 2.0,
-                      ),
-                      activeColor: Colors.green,
-                      inactiveColor: Colors.black38,
-                      onToggle: (val) {
-                        setState(() {
-                          status = val;
-                        });
-                      },
-                    ),
-                  ),
-                ),
+          const Padding(
+              padding: EdgeInsets.only(left: 18.0, top: 8),
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.grey, fontSize: 20),
+              )),
           const Divider(
             height: 5,
             thickness: 2,

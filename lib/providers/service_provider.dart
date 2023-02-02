@@ -88,9 +88,6 @@ getAllSubCategories(){
     return bookServiceList.firstWhere((element) => element.bookServiceId == id);
   }
 
-  BookServiceModel getOrderByIdWithDate(String id, num day) {
-    return bookServiceList.firstWhere((element) => element.bookServiceId == id && element.dateModel.day == day);
-  }
   OfferModel getOfferById(String id) {
     return offerModelList.firstWhere((element) => element.offerId == id);
   }

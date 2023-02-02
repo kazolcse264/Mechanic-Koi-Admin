@@ -68,12 +68,17 @@ class EmployeeProvider extends ChangeNotifier {
     final uploadTask = imageRef.putFile(File(path));
     final snapshot = await uploadTask.whenComplete(() => null);
     final downloadUrl = await snapshot.ref.getDownloadURL();
-    return ImageModel(title: imageName, imageDownloadUrl: downloadUrl);
+    return ImageModel(title: imageName, imageDownloadUrl: downloadUrl,);
   }
 
   EmployeeModel getEmployeeById(String id) {
     return employeeModelList.firstWhere((element) => element.employeeId == id);
   }
+
+  BookServiceModel getOrderById(String id) {
+    return employeeServicesModelList.firstWhere((element) => element.bookServiceId == id);
+  }
+
 
   Future<void> updateEmployeeField(
           String employeeId, String field, dynamic value) =>
@@ -81,6 +86,12 @@ class EmployeeProvider extends ChangeNotifier {
         employeeId,
         {field: value},
       );
+
+ /* int get totalIncome(String id) {
+    int total = 0;
+    employeeModelList.firstWhere((element) => element.employeeId == id);
+    return total;
+  }*/
 
   Future<void> deleteEmployee(String employeeId) {
     return DbHelper.deleteEmployee(employeeId);

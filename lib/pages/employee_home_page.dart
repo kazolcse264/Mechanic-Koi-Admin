@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mechanic_koi_admin/models/book_service_model.dart';
 import 'package:mechanic_koi_admin/pages/profile_page.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:provider/provider.dart';
 import '../custom_widgets/main_drawer.dart';
 import '../providers/service_provider.dart';
-import 'all_servicing_page.dart';
 import 'all_servicing_page_by_employee.dart';
 import 'bottom_nav_bar_wrapper_page.dart';
-import 'employee_list_page.dart';
-import 'offer_list_page.dart';
+
 
 class EmployeeHomePage extends StatefulWidget {
   static const String routeName = '/emp_home_page';
+
   const EmployeeHomePage({Key? key}) : super(key: key);
 
   @override
@@ -22,22 +20,26 @@ class EmployeeHomePage extends StatefulWidget {
 class _EmployeeHomePageState extends State<EmployeeHomePage> {
   @override
   void didChangeDependencies() {
-    Provider.of<EmployeeProvider>(context,listen: false).getUserInfo();
+    Provider.of<EmployeeProvider>(context, listen: false).getUserInfo();
     super.didChangeDependencies();
   }
+
   @override
   Widget build(BuildContext context) {
     final employeeProvider = Provider.of<EmployeeProvider>(context);
     final serviceProvider = Provider.of<ServiceProvider>(context);
-   if(employeeProvider.employeeModel != null){
-     employeeProvider.getAllServicesByEmployee(employeeProvider.employeeModel!.employeeId!);
-     employeeProvider.getAllServicesByEmployeeToday(employeeProvider.employeeModel!.employeeId!);
-   }
+    if (employeeProvider.employeeModel != null) {
+      employeeProvider.getAllServicesByEmployee(
+          employeeProvider.employeeModel!.employeeId!);
+      employeeProvider.getAllServicesByEmployeeToday(
+          employeeProvider.employeeModel!.employeeId!);
+    }
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer:  MainDrawer(isAdminMainDrawer: false,employeeProvider : employeeProvider),
+      drawer: MainDrawer(
+          isAdminMainDrawer: false, employeeProvider: employeeProvider),
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
@@ -57,27 +59,18 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         ),
         actions: [
           InkWell(
-            onTap: (){
-
-              Navigator.pushReplacementNamed(context, BottomNavBarPageWrapper.routeName);
-            },
-            child: const Icon(Icons.notifications),
-          ),
-          InkWell(
-            onTap: (){
-
-              Navigator.pushNamed(context, ProfilePage.routeName, arguments: false);
+            onTap: () {
+              Navigator.pushNamed(context, ProfilePage.routeName,
+                  arguments: false);
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 18.0, left: 8.0),
-              child:CircleAvatar(
-                backgroundImage: NetworkImage(
-                    employeeProvider.employeeModel?.employeeImageModel?.imageDownloadUrl ??
-                        'https://avatars.githubusercontent.com/u/74205867?v=4'),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(employeeProvider
+                        .employeeModel?.employeeImageModel?.imageDownloadUrl ??
+                    'https://avatars.githubusercontent.com/u/74205867?v=4'),
                 radius: 25,
               ),
-
-
             ),
           ),
         ],
@@ -136,22 +129,24 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                 ],
               ),
             ),
-            firstRowBodySection(context, size, serviceProvider,employeeProvider),
-            secondRowBodySection(context, size, serviceProvider, employeeProvider),
+            firstRowBodySection(
+                context, size, serviceProvider, employeeProvider),
+            secondRowBodySection(
+                context, size, serviceProvider, employeeProvider),
           ],
         ),
       ),
     );
   }
 
-  Padding secondRowBodySection(BuildContext context, Size size, ServiceProvider serviceProvider,EmployeeProvider employeeProvider) {
+  Padding secondRowBodySection(BuildContext context, Size size,
+      ServiceProvider serviceProvider, EmployeeProvider employeeProvider) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           InkWell(
-            onTap: () =>
-                Navigator.pushNamed(context, EmployeeListPage.routeName),
+            onTap: () {},
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,
@@ -176,22 +171,45 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children:  [
-                        const Icon(
-                          Icons.group,
+                      children: [
+                        Image.asset(
+                          'assets/icons/taka_icon.png',
+                          height: 25,
+                          width: 25,
                           color: Colors.lightBlue,
-                          size: 30,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          employeeProvider.employeeModelList.length.toString(),
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.lightBlue),
-                        ),
+                        (employeeProvider.employeeModel == null)
+                            ? const Text('')
+                            : Text(
+                                ((employeeProvider.employeeModel!.salary! /
+                                            30).round() *
+                                      ( DateTime.now()
+                                            .difference(employeeProvider
+                                                .employeeModel!
+                                                .employeeCreationTimeDateModel!
+                                                .timestamp
+                                                .toDate())
+                                            .inDays +1))
+                                    .toString(),
+                                style: const TextStyle(
+                                    fontSize: 30, color: Colors.lightBlue),
+                              ),
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    (employeeProvider.employeeModel == null) ? const Text('') : Text(
+                      '( ${(DateTime.now().difference(employeeProvider.employeeModel!.employeeCreationTimeDateModel!.timestamp.toDate()).inDays + 1).toString()} Days )',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -201,8 +219,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
             width: 5,
           ),
           InkWell(
-            onTap: () => Navigator.pushNamed(
-                context, OfferListPage.routeName),
+            onTap: () {},
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,
@@ -217,8 +234,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   children: [
                     const Text(
                       'Salary',
-                      style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 20,
@@ -226,21 +243,36 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.card_giftcard,
+                        Image.asset(
+                          'assets/icons/taka_icon.png',
+                          height: 25,
+                          width: 25,
                           color: Colors.lightBlue,
-                          size: 30,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
-                        (employeeProvider.employeeModel == null ) ? const Text('') : Text(
-                          employeeProvider.employeeModel!.salary.toString() ,
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.lightBlue),
-                        ),
+                        (employeeProvider.employeeModel == null)
+                            ? const Text('')
+                            : Text(
+                                employeeProvider.employeeModel!.salary!.round()
+                                    .toString(),
+                                style: const TextStyle(
+                                    fontSize: 30, color: Colors.lightBlue),
+                              ),
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      '( Per Month )',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -251,14 +283,17 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     );
   }
 
-  Padding firstRowBodySection(BuildContext context, Size size, ServiceProvider serviceProvider,EmployeeProvider employeeProvider) {
+  Padding firstRowBodySection(BuildContext context, Size size,
+      ServiceProvider serviceProvider, EmployeeProvider employeeProvider) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           InkWell(
-            onTap: () =>
-                Navigator.pushNamed(context, AllServicingPageByEmployee.routeName, arguments: employeeProvider.employeeServicesModelListToday.length),
+            onTap: () => Navigator.pushNamed(
+                context, AllServicingPageByEmployee.routeName,
+                arguments:
+                    employeeProvider.employeeServicesModelListToday.length),
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,
@@ -283,7 +318,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children:  [
+                      children: [
                         const Icon(
                           Icons.shopping_cart,
                           color: Colors.lightBlue,
@@ -293,7 +328,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                           width: 10,
                         ),
                         Text(
-                          employeeProvider.employeeServicesModelListToday.length.toString(),
+                          employeeProvider.employeeServicesModelListToday.length
+                              .toString(),
                           style: const TextStyle(
                               fontSize: 30, color: Colors.lightBlue),
                         ),
@@ -308,8 +344,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
             width: 5,
           ),
           InkWell(
-            onTap: () =>
-                Navigator.pushNamed(context, AllServicingPageByEmployee.routeName),
+            onTap: () => Navigator.pushNamed(
+                context, AllServicingPageByEmployee.routeName),
             child: SizedBox(
               height: size.height / 4,
               width: size.width / 2 - 15,
@@ -343,7 +379,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text( employeeProvider.employeeServicesModelList.length.toString(),
+                        Text(
+                          employeeProvider.employeeServicesModelList.length
+                              .toString(),
                           style: const TextStyle(
                               fontSize: 30, color: Colors.lightBlue),
                         ),

@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_switch/flutter_switch.dart';
+
 import 'package:mechanic_koi_admin/models/book_service_model.dart';
-import 'package:mechanic_koi_admin/providers/service_provider.dart';
-import 'package:mechanic_koi_admin/utils/helper_functions.dart';
+import 'package:mechanic_koi_admin/providers/employee_provider.dart';
+
 import 'package:provider/provider.dart';
 
 import '../utils/constants.dart';
 
-class ServiceDetailsPage extends StatefulWidget {
-  static const String routeName = '/service_details';
+class EmployeeServiceDetailsPage extends StatefulWidget {
+  static const String routeName = '/employee_service_details';
 
-  const ServiceDetailsPage({Key? key}) : super(key: key);
+  const EmployeeServiceDetailsPage({Key? key}) : super(key: key);
 
   @override
-  State<ServiceDetailsPage> createState() => _ServiceDetailsPageState();
+  State<EmployeeServiceDetailsPage> createState() => _EmployeeServiceDetailsPageState();
 }
 
-class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
+class _EmployeeServiceDetailsPageState extends State<EmployeeServiceDetailsPage> {
   late BookServiceModel bookServiceModel;
-  late ServiceProvider serviceProvider;
+  late EmployeeProvider employeeProvider;
   late String orderId;
   String errMsg = '';
 
   @override
   void didChangeDependencies() {
-    serviceProvider = Provider.of<ServiceProvider>(context);
+    employeeProvider = Provider.of<EmployeeProvider>(context);
     orderId = ModalRoute.of(context)!.settings.arguments as String;
-    bookServiceModel = serviceProvider.getOrderById(orderId);
+    bookServiceModel = employeeProvider.getOrderById(orderId);
     super.didChangeDependencies();
   }
   @override
@@ -43,26 +42,17 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
           const Divider(
             thickness: 2,
           ),
-          buildProductInfoSection(bookServiceModel),
+          buildCategoryInfoSection(bookServiceModel),
           buildHeader('Service Details'),
           const Divider(
             thickness: 2,
           ),
-          buildOrderSummerySection(bookServiceModel),
+          buildSubCategoryInfoSection(bookServiceModel),
           buildHeader('Payment Status'),
           const Divider(
             thickness: 2,
           ),
-          buildPaymentSection(bookServiceModel),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Confirmed Order',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ))
-          //buildOrderStatusSection(orderModel, orderProvider),
+          buildPaymentStatusSection(bookServiceModel),
         ],
       ),
     );
@@ -78,7 +68,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     );
   }
 
-  Widget buildProductInfoSection(BookServiceModel bookServiceModel) {
+  Widget buildCategoryInfoSection(BookServiceModel bookServiceModel) {
     return Card(
       color: kPrimaryColor,
       child: Padding(
@@ -108,7 +98,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     );
   }
 
-  Widget buildOrderSummerySection(BookServiceModel bookServiceModel) {
+  Widget buildSubCategoryInfoSection(BookServiceModel bookServiceModel) {
     return Card(
       color: Colors.white,
       child: Padding(
@@ -152,71 +142,37 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
       ),
     );
   }
-
-  Widget buildPaymentSection(BookServiceModel bookServiceModel) {
+  Widget buildPaymentStatusSection(BookServiceModel bookServiceModel) {
     return Card(
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
           children: [
-            const Text(
-              'Pending',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              width: 80,
-              child: FlutterSwitch(
-                width: 60.0,
-                height: 35.0,
-                toggleSize: 30.0,
-                value: bookServiceModel.paymentStatus,
-                borderRadius: 30.0,
-                toggleColor: Colors.white,
-                toggleBorder: Border.all(
-                  color: Colors.white,
-                  width: 2.0,
+            ListTile(
+                title: const Padding(
+                  padding: EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    'Payment status  ',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-                activeColor: Colors.green,
-                inactiveColor: Colors.black38,
-                onToggle: (val) async {
-                  setState(() {
-                    bookServiceModel.paymentStatus =
-                        !bookServiceModel.paymentStatus;
-                  });
-                  try {
-                    serviceProvider.updateBookingStatus(
-                        bookServiceModel.bookServiceId!,
-                        bookServiceFieldPaymentStatus,
-                        bookServiceModel.paymentStatus);
-                    EasyLoading.show(status: 'Please Wait...');
-                    showMsg(context, 'Update Successfully');
-                    EasyLoading.dismiss();
-                  } catch (error) {
-                    errMsg = error.toString();
-                    showMsg(context, errMsg);
-                  }
-                },
-              ),
-            ),
-            const Text(
-              'Confirmed',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+
+                trailing:Text(
+                  '${bookServiceModel.paymentStatus}',
+                  style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold),
+                ), ),
           ],
         ),
       ),
     );
   }
+
 
 }

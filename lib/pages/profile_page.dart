@@ -1,8 +1,4 @@
-import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mechanic_koi_admin/models/employee_model.dart';
@@ -275,6 +271,10 @@ class _ProfilePageState extends State<ProfilePage> {
     employeeProvider.updateUserProfileField(
       '$employeeFieldEmployeeImageModel.$imageFieldOfferTitle',
       imageModel.title,
+    );
+    employeeProvider.updateUserProfileField(
+      '$employeeFieldEmployeeImageModel.$imageFieldOfferId',
+      imageModel.offerId,
     );
   }
 }
