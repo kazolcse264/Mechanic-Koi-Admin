@@ -8,10 +8,10 @@ import 'package:mechanic_koi_admin/models/employee_model.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../auth/auth_service.dart';
-import '../models/date_model.dart';
-import '../utils/helper_functions.dart';
-import 'launcher_page.dart';
+import '../../auth/auth_service.dart';
+import '../../models/date_model.dart';
+import '../../utils/helper_functions.dart';
+import '../launcher_page.dart';
 
 class AddEmployeePage extends StatefulWidget {
   static const String routeName = '/add_employee';

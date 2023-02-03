@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:mechanic_koi_admin/pages/employee_home_page.dart';
-import 'package:mechanic_koi_admin/pages/home_page.dart';
-import 'package:mechanic_koi_admin/pages/offer_list_page.dart';
+import 'package:mechanic_koi_admin/pages/Employee/employee_home_page.dart';
+import 'package:mechanic_koi_admin/pages/Admin/home_page.dart';
+import 'package:mechanic_koi_admin/pages/Admin/offer_list_page.dart';
 import 'package:mechanic_koi_admin/pages/profile_page.dart';
 import 'package:mechanic_koi_admin/pages/settings.dart';
 

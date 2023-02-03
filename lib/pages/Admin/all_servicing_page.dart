@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mechanic_koi_admin/pages/service_details_page.dart';
+import 'package:mechanic_koi_admin/pages/Admin/service_details_page.dart';
 import 'package:mechanic_koi_admin/providers/service_provider.dart';
 import 'package:mechanic_koi_admin/utils/helper_functions.dart';
 import 'package:provider/provider.dart';

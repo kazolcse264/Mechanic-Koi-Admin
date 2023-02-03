@@ -7,9 +7,9 @@ import 'package:mechanic_koi_admin/providers/service_provider.dart';
 import 'package:mechanic_koi_admin/utils/helper_functions.dart';
 
 import 'package:provider/provider.dart';
-import '../models/date_model.dart';
-import '../models/image_model.dart';
-import '../utils/widget_functions.dart';
+import '../../models/date_model.dart';
+import '../../models/image_model.dart';
+import '../../utils/widget_functions.dart';
 
 class OfferDetailsPage extends StatefulWidget {
   static const String routeName = '/offer_details';

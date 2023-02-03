@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mechanic_koi_admin/custom_widgets/main_drawer.dart';
-import 'package:mechanic_koi_admin/pages/all_servicing_page.dart';
-import 'package:mechanic_koi_admin/pages/employee_list_page.dart';
+import 'package:mechanic_koi_admin/pages/Admin/all_servicing_page.dart';
+import 'package:mechanic_koi_admin/pages/Employee/employee_list_page.dart';
 import 'package:mechanic_koi_admin/pages/profile_page.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:mechanic_koi_admin/providers/service_provider.dart';
 import 'package:provider/provider.dart';
-import '../custom_widgets/badge_view.dart';
+import '../../custom_widgets/badge_view.dart';
 import 'offer_list_page.dart';
 
 

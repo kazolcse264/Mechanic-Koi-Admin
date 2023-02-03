@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mechanic_koi_admin/auth/auth_service.dart';
-import 'package:mechanic_koi_admin/pages/employee_list_page.dart';
+import 'package:mechanic_koi_admin/pages/Employee/employee_list_page.dart';
 
-import '../pages/all_servicing_page.dart';
-import '../pages/all_servicing_page_by_employee.dart';
-import '../pages/category_page.dart';
+import '../pages/Admin/all_servicing_page.dart';
+import '../pages/Employee/all_servicing_page_by_employee.dart';
+import '../pages/Admin/category_page.dart';
 import '../pages/launcher_page.dart';
-import '../pages/offer_list_page.dart';
+import '../pages/Admin/offer_list_page.dart';
 import '../providers/employee_provider.dart';
 import '../providers/service_provider.dart';
 

@@ -3,8 +3,8 @@ import 'package:mechanic_koi_admin/models/employee_model.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/helper_functions.dart';
-import '../utils/widget_functions.dart';
+import '../../utils/helper_functions.dart';
+import '../../utils/widget_functions.dart';
 
 class EmployeeDetailsPage extends StatefulWidget {
   static const String routeName = '/employee_details';

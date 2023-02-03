@@ -6,7 +6,7 @@ import 'package:mechanic_koi_admin/providers/service_provider.dart';
 import 'package:mechanic_koi_admin/utils/helper_functions.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/constants.dart';
+import '../../utils/constants.dart';
 
 class ServiceDetailsPage extends StatefulWidget {
   static const String routeName = '/service_details';

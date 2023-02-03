@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mechanic_koi_admin/pages/profile_page.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:provider/provider.dart';
-import '../custom_widgets/main_drawer.dart';
-import '../providers/service_provider.dart';
+import '../../custom_widgets/main_drawer.dart';
+import '../../providers/service_provider.dart';
 import 'all_servicing_page_by_employee.dart';
-import 'bottom_nav_bar_wrapper_page.dart';
+import '../bottom_nav_bar_wrapper_page.dart';
 
 
 class EmployeeHomePage extends StatefulWidget {

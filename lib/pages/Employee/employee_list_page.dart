@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mechanic_koi_admin/pages/add_employee_page.dart';
-import 'package:mechanic_koi_admin/pages/employee_details_page.dart';
+import 'package:mechanic_koi_admin/pages/Admin/add_employee_page.dart';
+import 'package:mechanic_koi_admin/pages/Employee/employee_details_page.dart';
 import 'package:mechanic_koi_admin/providers/employee_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/constants.dart';
-import '../utils/helper_functions.dart';
+import '../../utils/constants.dart';
+import '../../utils/helper_functions.dart';
 
 enum _MenuValues {
   edit,

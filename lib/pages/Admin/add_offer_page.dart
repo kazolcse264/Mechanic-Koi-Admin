@@ -8,11 +8,11 @@ import 'package:mechanic_koi_admin/models/offer_model.dart';
 import 'package:mechanic_koi_admin/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-import '../models/category_model.dart';
-import '../models/date_model.dart';
-import '../models/subcategory_model.dart';
-import '../providers/service_provider.dart';
-import '../utils/helper_functions.dart';
+import '../../models/category_model.dart';
+import '../../models/date_model.dart';
+import '../../models/subcategory_model.dart';
+import '../../providers/service_provider.dart';
+import '../../utils/helper_functions.dart';
 
 class AddOfferPage extends StatefulWidget {
   static const String routeName = '/add_offer';
