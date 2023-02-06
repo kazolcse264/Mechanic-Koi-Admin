@@ -19,6 +19,7 @@ class _AllServicingPageState extends State<AllServicingPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Booking Services'),
+        centerTitle: true,
       ),
       body: Consumer<ServiceProvider>(
         builder: (context, provider, child) => ListView.builder(

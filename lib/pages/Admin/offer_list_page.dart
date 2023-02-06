@@ -28,6 +28,7 @@ class _OfferListPageState extends State<OfferListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Offer list Page'),
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

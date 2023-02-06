@@ -8,7 +8,6 @@ import 'package:mechanic_koi_admin/pages/Admin/add_employee_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/add_offer_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/all_servicing_page.dart';
 import 'package:mechanic_koi_admin/pages/Employee/all_servicing_page_by_employee.dart';
-import 'package:mechanic_koi_admin/pages/bottom_nav_bar_page.dart';
 import 'package:mechanic_koi_admin/pages/bottom_nav_bar_wrapper_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/category_page.dart';
 import 'package:mechanic_koi_admin/pages/Employee/employee_details_page.dart';
@@ -16,9 +15,12 @@ import 'package:mechanic_koi_admin/pages/Employee/employee_home_page.dart';
 import 'package:mechanic_koi_admin/pages/Employee/employee_list_page.dart';
 import 'package:mechanic_koi_admin/pages/Employee/employee_service_details_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/home_page.dart';
+import 'package:mechanic_koi_admin/pages/contact_us.dart';
+import 'package:mechanic_koi_admin/pages/how_it_work.dart';
 import 'package:mechanic_koi_admin/pages/launcher_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/offer_details_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/offer_list_page.dart';
+import 'package:mechanic_koi_admin/pages/privacy_policy.dart';
 import 'package:mechanic_koi_admin/pages/profile_page.dart';
 import 'package:mechanic_koi_admin/pages/Admin/service_details_page.dart';
 import 'package:mechanic_koi_admin/pages/settings.dart';
@@ -83,7 +85,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.routeName : (context) => const LoginScreen(),
         LauncherPage.routeName : (context) => const LauncherPage(),
-        ProfilePage.routeName : (context) => ProfilePage(),
+        ProfilePage.routeName : (context) => const ProfilePage(),
         HomePage.routeName : (context) => const HomePage(),
         EmployeeHomePage.routeName : (context) => const EmployeeHomePage(),
         SettingsPage.routeName : (context) => const SettingsPage(),
@@ -101,6 +103,9 @@ class MyApp extends StatelessWidget {
         EmployeeDetailsPage.routeName : (context) => const EmployeeDetailsPage(),
         AllServicingPageByEmployee.routeName : (context) => const AllServicingPageByEmployee(),
         EmployeeServiceDetailsPage.routeName : (context) => const EmployeeServiceDetailsPage(),
+        ContactUsPage.routeName : (context) => const ContactUsPage(),
+        PrivacyPolicyPage.routeName : (context) => const PrivacyPolicyPage(),
+        HowItWorkPage.routeName : (context) => const HowItWorkPage(),
       },
     );
   }

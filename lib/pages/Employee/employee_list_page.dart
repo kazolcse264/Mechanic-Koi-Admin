@@ -28,6 +28,7 @@ class _EmployeeListPageState extends State<EmployeeListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Employee list Page'),
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

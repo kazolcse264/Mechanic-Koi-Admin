@@ -14,7 +14,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings'),),
+      appBar: AppBar(title: const Text('Settings'),centerTitle: true,),
       body: ListView(
         children: [
           const Padding(
@@ -31,9 +31,9 @@ class _SettingsPageState extends State<SettingsPage> {
                  title: const Text('Language'),
                  trailing: Row(
                    mainAxisSize: MainAxisSize.min,
-                   children: [
+                   children: const [
                      Text('English',style: TextStyle(color: Colors.grey),),
-                     const Icon(Icons.keyboard_arrow_right),
+                     Icon(Icons.keyboard_arrow_right),
                    ],
                  )
                ),
@@ -65,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
                  onTap: () {},
                  leading: const CircleAvatar(child: Icon(Icons.notifications)),
                  title: const Text('Notification'),
-                 trailing: Container(
+                 trailing: SizedBox(
                    height: 100,width: 100,
                    child: FlutterSwitch(
                      width: 60.0,

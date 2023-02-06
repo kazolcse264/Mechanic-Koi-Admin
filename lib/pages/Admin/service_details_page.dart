@@ -35,6 +35,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(orderId),
+        centerTitle: true,
       ),
       body: ListView(
         padding: const EdgeInsets.all(8),

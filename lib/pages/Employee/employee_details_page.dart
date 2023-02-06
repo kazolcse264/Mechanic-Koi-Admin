@@ -117,12 +117,12 @@ class _EmployeeDetailsPageState extends State<EmployeeDetailsPage> {
                 employeeModel.employeeCreationTimeDateModel!.timestamp.toDate())),
             trailing: IconButton(
               onPressed: () async {
-                final selectedDate = await showDatePicker(
+               /* final selectedDate = await showDatePicker(
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime.now(),
                   lastDate: DateTime(DateTime.now().year + 1),
-                );
+                );*/
              /*   employeeProvider.updateAdminOfferField(employeeId, '$offerFieldOfferExpiredDateModel.$dateFieldTimestamp', Timestamp.fromDate(selectedDate!),);
                 employeeProvider.updateAdminOfferField(employeeId, '$offerFieldOfferExpiredDateModel.$dateFieldDay', selectedDate.day);
                 employeeProvider.updateAdminOfferField(employeeId, '$offerFieldOfferExpiredDateModel.$dateFieldMonth', selectedDate.month);

@@ -9,7 +9,7 @@ import '../models/employee_model.dart';
 
 class DbHelper {
   static const String collectAdmin = 'Admins';
-  static const String collectEmployee = 'Employees';
+  static const String collectionEmployees = 'Employees';
   static final _db = FirebaseFirestore.instance;
 
   static Future<bool> isAdmin(String uid) async {
@@ -18,27 +18,27 @@ class DbHelper {
   }
 
   static Future<bool> isEmployee(String uid) async {
-    final snapshot = await _db.collection(collectEmployee).doc(uid).get();
+    final snapshot = await _db.collection(collectionEmployees).doc(uid).get();
     return snapshot.exists;
   }
 
   static Future<bool> doesUserExist(String uid) async {
-    final snapshot = await _db.collection(collectEmployee).doc(uid).get();
+    final snapshot = await _db.collection(collectionEmployees).doc(uid).get();
     return snapshot.exists;
   }
 
   static Future<void> addEmployee(EmployeeModel employeeModel) {
-    final doc = _db.collection(collectEmployee).doc(employeeModel.employeeId);
+    final doc = _db.collection(collectionEmployees).doc(employeeModel.employeeId);
     return doc.set(employeeModel.toMap());
   }
 
   static Stream<DocumentSnapshot<Map<String, dynamic>>> getUserInfo(
           String uid) =>
-      _db.collection(collectEmployee).doc(uid).snapshots();
+      _db.collection(collectionEmployees).doc(uid).snapshots();
 
   static Future<void> updateEmployeeProfileField(
       String uid, Map<String, dynamic> map) {
-    return _db.collection(collectEmployee).doc(uid).update(map);
+    return _db.collection(collectionEmployees).doc(uid).update(map);
   }
 
   static Future<void> updateBookingStatus(String id, Map<String, dynamic> map) {
@@ -94,7 +94,7 @@ class DbHelper {
     return collectionRef.snapshots();
   }
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllEmployees() {
-    final collectionRef = _db.collection(collectEmployee);
+    final collectionRef = _db.collection(collectionEmployees);
     return collectionRef.snapshots();
   }
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllOffers() {
@@ -112,13 +112,15 @@ class DbHelper {
     return collectionRef.snapshots();
   }
 
-  static Future<void> addNewOffer(OfferModel offerModel) {
+  static Future<void> addNewOffer(OfferModel offerModel, SubcategoryModel subcategoryModel) {
     final wb = _db.batch(); //write batch
     final offerDoc = _db
         .collection(collectionOffers)
         .doc(DateTime.now().millisecondsSinceEpoch.toString());
+    final subCatDoc = _db.collection(collectionSubCategory).doc(subcategoryModel.serviceId);
     offerModel.offerId = offerDoc.id;
     offerModel.subcategoryModel.servicePrice = offerModel.offerPrice;
+    wb.update(subCatDoc, {subcategoryFieldServicePrice : offerModel.offerPrice});
     wb.set(offerDoc, offerModel.toMap());
     return wb.commit();
   }
@@ -127,7 +129,7 @@ class DbHelper {
     return _db.collection(collectionOffers).doc(offerId).delete();
   }
   static Future<void> deleteEmployee(String employeeId) {
-    return _db.collection(collectEmployee).doc(employeeId).delete();
+    return _db.collection(collectionEmployees).doc(employeeId).delete();
   }
 
   static Future<void> updateAdminOfferField(
@@ -136,6 +138,6 @@ class DbHelper {
   }
   static Future<void> updateEmployeeField(
       String employeeId, Map<String, dynamic> map) {
-    return _db.collection(collectEmployee).doc(employeeId).update(map);
+    return _db.collection(collectionEmployees).doc(employeeId).update(map);
   }
 }

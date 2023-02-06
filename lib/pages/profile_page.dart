@@ -11,9 +11,9 @@ import '../utils/widget_functions.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String routeName = '/profile';
-  bool? isAdmin;
+  final bool? isAdmin;
 
-  ProfilePage({Key? key, this.isAdmin}) : super(key: key);
+  const ProfilePage({Key? key, this.isAdmin}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -34,13 +34,14 @@ class _ProfilePageState extends State<ProfilePage> {
             : (isAdminProfile)
                 ? const Text('Admin Profile')
                 : const Text('Employee Profile'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: Container(
+              child: SizedBox(
                 height: 150,
                 width: double.infinity,
                 child: Card(
@@ -94,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 width: double.infinity,
                 child: Card(
@@ -172,6 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     : employeeProvider.employeeModel!
                                         .addressModel!.addressLine1),
                           ),
+
                         ],
                       ),
                     ),

@@ -11,7 +11,6 @@ import '../../utils/background.dart';
 import '../../utils/constants.dart';
 import '../../utils/helper_functions.dart';
 import '../Login/login_screen.dart';
-import '../bottom_nav_bar_page.dart';
 import '../launcher_page.dart';
 import 'components/sign_up_top_image.dart';
 

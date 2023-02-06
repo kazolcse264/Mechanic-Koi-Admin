@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:mechanic_koi_admin/auth/auth_service.dart';
 import 'package:mechanic_koi_admin/pages/Employee/employee_list_page.dart';
+import 'package:mechanic_koi_admin/pages/contact_us.dart';
+import 'package:mechanic_koi_admin/pages/how_it_work.dart';
+import 'package:mechanic_koi_admin/pages/privacy_policy.dart';
+import 'package:mechanic_koi_admin/pages/settings.dart';
 
 import '../pages/Admin/all_servicing_page.dart';
 import '../pages/Employee/all_servicing_page_by_employee.dart';
@@ -200,7 +203,10 @@ class _MainDrawerState extends State<MainDrawer> {
             thickness: 2,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, HowItWorkPage.routeName);
+            },
             leading: CircleAvatar(
               child: Image.asset(
                 'assets/icons/fork.png',
@@ -213,29 +219,38 @@ class _MainDrawerState extends State<MainDrawer> {
             trailing: const Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, ContactUsPage.routeName);
+            },
             leading: const CircleAvatar(child: Icon(Icons.location_on)),
             title: const Text('Contact Us'),
             trailing: const Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, PrivacyPolicyPage.routeName);
+            },
             leading: const CircleAvatar(child: Icon(Icons.privacy_tip)),
             title: const Text('Privacy Policy'),
             trailing: const Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, SettingsPage.routeName);
+            },
             leading: const CircleAvatar(child: Icon(Icons.settings)),
             title: const Text('Settings'),
             trailing: const Icon(Icons.keyboard_arrow_right),
           ),
-          ListTile(
+          /*ListTile(
             onTap: () {},
             leading: const CircleAvatar(child: Icon(Icons.support)),
             title: const Text('Support'),
             trailing: const Icon(Icons.keyboard_arrow_right),
-          ),
+          ),*/
           ListTile(
             onTap: () {
               AuthService.logOut().then((value) =>

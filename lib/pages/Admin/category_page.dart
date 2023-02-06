@@ -24,6 +24,7 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Category'),
+        centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

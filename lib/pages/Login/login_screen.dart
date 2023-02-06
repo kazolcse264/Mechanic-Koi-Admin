@@ -167,79 +167,77 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),*/
 
                     if (!isAdmin)
-                      Container(
-                        child: Column(
-                          children: [
-                            RichText(
-                                text: TextSpan(children: [
-                              const TextSpan(
-                                text: 'Don\'t have an account??',
-                                style: TextStyle(color: kPrimaryColor),
-                              ),
-                              TextSpan(
-                                text: '\tSingUp',
-                                style: const TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () => Navigator.pushNamed(
-                                      context, SignUpScreen.routeName),
-                              ),
-                            ])),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const Text(
-                              'OR',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const Text(
-                              'Sign In with',
+                      Column(
+                        children: [
+                          RichText(
+                              text: TextSpan(children: [
+                            const TextSpan(
+                              text: 'Don\'t have an account??',
                               style: TextStyle(color: kPrimaryColor),
                             ),
-                            const SizedBox(
-                              height: 20,
+                            TextSpan(
+                              text: '\tSingUp',
+                              style: const TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Navigator.pushNamed(
+                                    context, SignUpScreen.routeName),
                             ),
-                            InkWell(
-                              onTap: () {
-                                _signInWithGoogleAccount(employeeProvider);
-                                Navigator.pushReplacementNamed(
-                                    context, BottomNavBarPageWrapper.routeName,
-                                    arguments: false);
-                              },
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: kPrimaryColor,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/google.png',
-                                        height: 20,
-                                        width: 20,
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      const Text(
-                                        'Google',
-                                        style: TextStyle(
-                                            fontSize: 22, color: kPrimaryColor),
-                                      ),
-                                    ],
-                                  ),
+                          ])),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            'OR',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            'Sign In with',
+                            style: TextStyle(color: kPrimaryColor),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              _signInWithGoogleAccount(employeeProvider);
+                              Navigator.pushReplacementNamed(
+                                  context, BottomNavBarPageWrapper.routeName,
+                                  arguments: false);
+                            },
+                            child: Card(
+                              elevation: 10,
+                              shadowColor: kPrimaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/google.png',
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    const Text(
+                                      'Google',
+                                      style: TextStyle(
+                                          fontSize: 22, color: kPrimaryColor),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                   ],
                 )),

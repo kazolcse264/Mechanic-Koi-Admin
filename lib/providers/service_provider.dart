@@ -103,9 +103,8 @@ getAllSubCategories(){
     return ImageModel(title: imageName, imageDownloadUrl: downloadUrl);
   }
 
-  Future<void> addNewOffer(
-      OfferModel offerModel) =>
-      DbHelper.addNewOffer(offerModel);
+  Future<void> addNewOffer(OfferModel offerModel, SubcategoryModel subcategoryModel ) =>
+      DbHelper.addNewOffer(offerModel,subcategoryModel);
 
 
   Future<void> deleteOffer(String offerId) {

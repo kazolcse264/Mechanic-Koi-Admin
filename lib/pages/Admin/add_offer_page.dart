@@ -419,7 +419,7 @@ class _AddOfferPageState extends State<AddOfferPage> {
           offerName: offerNameController.text,
           thumbnailImageModel: imageModel,
         );
-        await serviceProvider.addNewOffer(offerModel);
+        await serviceProvider.addNewOffer(offerModel,subcategoryModel!);
         EasyLoading.dismiss();
         if (mounted) showMsg(context, 'Offer Saved Successfully');
         resetFields();

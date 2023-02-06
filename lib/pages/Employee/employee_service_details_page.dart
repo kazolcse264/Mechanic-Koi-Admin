@@ -34,6 +34,7 @@ class _EmployeeServiceDetailsPageState extends State<EmployeeServiceDetailsPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(orderId),
+        centerTitle: true,
       ),
       body: ListView(
         padding: const EdgeInsets.all(8),
