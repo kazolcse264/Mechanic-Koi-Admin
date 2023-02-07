@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mechanic_koi_admin/models/category_model.dart';
 import 'package:mechanic_koi_admin/models/date_model.dart';
 import 'package:mechanic_koi_admin/models/offer_model.dart';
@@ -128,7 +129,7 @@ class DbHelper {
   static Future<void> deleteOffer(String offerId) {
     return _db.collection(collectionOffers).doc(offerId).delete();
   }
-  static Future<void> deleteEmployee(String employeeId) {
+  static Future<void> deleteEmployee(String employeeId) async{
     return _db.collection(collectionEmployees).doc(employeeId).delete();
   }
 

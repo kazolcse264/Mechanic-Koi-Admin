@@ -12,6 +12,7 @@ import '../../providers/employee_provider.dart';
 import '../../utils/background.dart';
 import '../../utils/constants.dart';
 
+import '../../utils/widget_functions.dart';
 import '../Signup/signup_screen.dart';
 
 import '../bottom_nav_bar_wrapper_page.dart';
@@ -129,7 +130,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showSingleTextFieldInputDialog(
+                                  context: context,
+                                  title: 'Enter your Email Address which you provide before',
+                                  onSubmit: (value) {
+                                    try{
+                                      EasyLoading.show();
+                                      AuthService.resetPassword(value);
+                                      EasyLoading.dismiss();
+                                    }catch(error){
+                                      EasyLoading.dismiss();
+                                      showMsg(context, error.toString());
+                                    }
+                                  },
+                                );
+                              },
                               child: const Text('Forgot Password?'),
                             ),
                           ],

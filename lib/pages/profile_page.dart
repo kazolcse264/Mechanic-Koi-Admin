@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mechanic_koi_admin/models/employee_model.dart';
@@ -173,7 +172,32 @@ class _ProfilePageState extends State<ProfilePage> {
                                     : employeeProvider.employeeModel!
                                         .addressModel!.addressLine1),
                           ),
-
+                          ListTile(
+                            title: const Text('Designation'),
+                            trailing: Text(
+                                employeeProvider.employeeModel!.designation ??
+                                    'Not Set Yet'),
+                          ),
+                          ListTile(
+                            title: const Text('Age'),
+                            trailing:
+                                (employeeProvider.employeeModel!.age == null)
+                                    ? const Text('Not Set Yet')
+                                    : Text(
+                                        employeeProvider.employeeModel!.age
+                                            .toString(),
+                                      ),
+                          ),
+                          ListTile(
+                            title: const Text('Salary'),
+                            trailing:
+                            (employeeProvider.employeeModel!.salary == null)
+                                ? const Text('Not Set Yet')
+                                : Text(
+                              employeeProvider.employeeModel!.salary!.round()
+                                  .toString(),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -217,7 +241,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         showMultipleTextFieldInputDialog(
                           context: context,
-                          title: 'Edit Profile',
+                          title: 'You Must fill the all field and don\'t forgot the email address as you logged in before.',
                           onSubmit: (value) {
                             // Here value is a list
                             for (var i = 0; i < value.length; i++) {
@@ -227,7 +251,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           },
                         );
                       },
-                      child: const Text('Edit Profile'),
+                      child: const Text('EDIT PROFILE',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
                     ),
                   ),
           ],
@@ -235,8 +259,9 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
 //For Admin Profile Picture Update Code
- /* void _getAdminImage() async {
+  /* void _getAdminImage() async {
     final file =
         await ImagePicker().pickImage(source: _imageSource, imageQuality: 70);
     if (file != null) {

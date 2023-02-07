@@ -181,9 +181,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                         ),
                         (employeeProvider.employeeModel == null)
                             ? const Text('')
-                            : Text(
-                                ((employeeProvider.employeeModel!.salary! /
-                                            30).round() *
+                            : (employeeProvider.employeeModel!.salary == null) ? const Text('') :Text(
+                                ((employeeProvider.employeeModel!.salary! / 30).round() *
                                       ( DateTime.now()
                                             .difference(employeeProvider
                                                 .employeeModel!
@@ -252,7 +251,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                         ),
                         (employeeProvider.employeeModel == null)
                             ? const Text('')
-                            : Text(
+                            : (employeeProvider.employeeModel!.salary == null) ? const Text('') : Text(
                                 employeeProvider.employeeModel!.salary!.round()
                                     .toString(),
                                 style: const TextStyle(
